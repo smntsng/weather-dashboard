@@ -1,0 +1,14 @@
+*{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+header{
+    background-image: linear-gradient(90deg, #3361ba 0%, #210e51 80%);
+    color: white;
+}
+
+#form-heading{
+    letter-spacing: .2rem;
+    font-weight: bold;
+    font-size: xx-large;
+}

@@ -52,6 +52,12 @@ searchButtonEl.addEventListener("click", function(e) {
   
     var userSearch = searchInputEl.value;
     console.log(userSearch);
-    
+
     localStorage.setItem("userSearch", userSearch);
+
+    var userSearchGet = localStorage.getItem('userSearch');
+console.log(userSearchGet);
+var historyEl = document.getElementById("history")
+historyEl.textContent = userSearchGet;
+
   });

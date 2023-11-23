@@ -38,11 +38,14 @@ button{
     
 }
 
-.list-group{
-padding: 10px;
 
-border-radius: 3px;
-width: 112%;
-text-align: center;
-color: black;
+li{
+    background-color: #aeaeae;
+    padding: 8px;
+    border-radius: 3px;
+    list-style-type: none;
+    text-align: center;
+    width:113%;
+    margin-top: 5%;
 }
+

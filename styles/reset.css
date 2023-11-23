@@ -40,8 +40,9 @@ button{
 
 .list-group{
 padding: 10px;
-background-color: #aeaeae;
+
 border-radius: 3px;
 width: 112%;
 text-align: center;
+color: black;
 }

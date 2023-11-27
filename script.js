@@ -1,7 +1,3 @@
-console.log("hello")
-
-https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}.
-
 // Create a weather dashboard with form inputs.
 // When a user searches for a city they are presented with current and future conditions for that city and that city is added to the search history
 
@@ -25,11 +21,6 @@ https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API 
     // c. create fetch
     // d. fetch the LONG LAT
     // e. create a varible in the weather api that will append the long lat
-// 2. append search results to search history
-    // a. save user input to a var
-    // b. find the value and set item to local storage
-    // c. these values need to be "get" and placed in an array
-    // d. how do you append this array to screen
 // 3. display search data to todays data
     //  fetch the weather api
     // creating a var to hold the temp of the returned data
@@ -40,7 +31,6 @@ https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API 
 
 
 
-// var geocodingURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=c2d42dec65a12122a88666f5d0e55970";
 
 
 var searchInputEl = document.getElementById("search-input");
@@ -64,6 +54,38 @@ searchHistory.unshift(userSearchGet)
 // calling function
 updateSearchHistory();
 
+
+var city = userSearch
+var geocodingURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=c2d42dec65a12122a88666f5d0e55970";
+
+var city = userSearch
+console.log("this is the city" + city)
+
+fetch(geocodingURL)
+  .then(function (response) {
+    return response.json();
+  }).then(function (data) {
+
+    var lat =data[0].lat
+    var lon =data[0].lon
+
+    var weatherURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=c2d42dec65a12122a88666f5d0e55970"
+
+    console.log(weatherURL)
+
+    fetch(weatherURL)
+  .then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    console.log(data)
+    console.log("temp: " + data.list[0].main.temp)
+    console.log("wind: " + data.list[0].wind.speed)
+    console.log("humidity: " + data.list[0].main.humidity)
+  })
+
+
+});
+
 });
 
 function updateSearchHistory() {
@@ -80,5 +102,4 @@ function updateSearchHistory() {
     });
 
 // add the new ul to the historyEl
-    historyEl.appendChild(ulEL);
-}
+    historyEl.appendChild(ulEL)};

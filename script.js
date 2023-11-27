@@ -15,17 +15,9 @@
 // The humidity
 // When a user click on a city in the search history they are again presented with current and future conditions for that city
 
-// 1. connect weather API
-    // a. create a var to hold geocoding API URL with a placeholder varible for city
-    // b. create a var to hold user input to = city, remember to clean the data, spaces....etc
-    // c. create fetch
-    // d. fetch the LONG LAT
-    // e. create a varible in the weather api that will append the long lat
+
 // 3. display search data to todays data
-    //  fetch the weather api
-    // creating a var to hold the temp of the returned data
-    // creating a var to hold the wind of the returned data
-    // creating a var to hold the humidity of the returned data
+
 // 4. display 5 day forecast to future forecast
     // create 5 cards and append similar to above
 
@@ -59,7 +51,6 @@ var city = userSearch
 var geocodingURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=c2d42dec65a12122a88666f5d0e55970";
 
 var city = userSearch
-console.log("this is the city" + city)
 
 fetch(geocodingURL)
   .then(function (response) {
@@ -71,18 +62,70 @@ fetch(geocodingURL)
 
     var weatherURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=c2d42dec65a12122a88666f5d0e55970"
 
-    console.log(weatherURL)
 
     fetch(weatherURL)
   .then(function (response) {
     return response.json();
   }).then(function (data) {
     console.log(data)
-    console.log("temp: " + data.list[0].main.temp)
+    console.log("temp: " + (Math.floor(data.list[0].main.temp-273.15)))
     console.log("wind: " + data.list[0].wind.speed)
     console.log("humidity: " + data.list[0].main.humidity)
-  })
+    console.log("city: " + data.city.name)
 
+    
+    
+    
+    var iconcode = data.list[0].weather[0].icon
+    var iconUrl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+    console.log(iconUrl)
+    
+
+
+   
+
+    var todaysDate = dayjs().format("DD-MM-YYYY");
+    console.log(todaysDate)
+
+
+    document.querySelector("#today").innerHTML = "";
+    var todayEL = document.getElementById("today");
+    var h1El = document.createElement("h1");
+    var city = data.city.name
+    var todaysDate = dayjs().format("DD-MM-YYYY");
+    var h1Title = document.createTextNode(city + " " + "(" + todaysDate  + ")");
+    console.log
+    h1El.appendChild(h1Title); 
+    todayEL.appendChild(h1El);
+
+
+    var todayEL = document.getElementById("today");
+    var h2El = document.createElement("h2");
+    var temp = Math.floor(data.list[0].main.temp-273.15)
+    var TempEl = document.createTextNode("Temp: " + temp + "ºC");
+    console.log
+    h2El.appendChild(TempEl); 
+    todayEL.appendChild(h2El);
+
+    var todayEL = document.getElementById("today");
+    var h2El = document.createElement("h2");
+    var wind = data.list[0].wind.speed
+    var windEl = document.createTextNode("Wind: " + wind + " KPH");
+    console.log
+    h2El.appendChild(windEl); 
+    todayEL.appendChild(h2El);
+
+    var todayEL = document.getElementById("today");
+    var h2El = document.createElement("h2");
+    var humidity = data.list[0].main.humidity
+    var humidityEl = document.createTextNode("Humidity: " + humidity + "%");
+    console.log
+    h2El.appendChild(humidityEl); 
+    todayEL.appendChild(h2El);
+
+
+
+  })
 
 });
 

@@ -9,9 +9,9 @@ The weather dashboard has been created to allow users to search a city to see th
 1. Add a city into the search box and click search
  <br />
  
-
-<br />
 ![alt text](assets/images/screenshot-2.jpg)
+<br />
+
 2. Results will be displayed by todays forecast and the next 5 days in the blue cards
 
 

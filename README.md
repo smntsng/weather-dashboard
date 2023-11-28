@@ -2,7 +2,8 @@
 
 The weather dashboard has been created to allow users to search a city to see the weather forcast for the current time and future 5 days. The Temp, humidity and wind speed will be displayed by each day along with weather icons. 
 
-![alt text](assets/images/screenshot-1.jpg)
+![alt text](assets/images/screenshot 1.jpg)
+
 (https://smntsng.github.io/work-day-scheduler/)
 
 ## Instructions

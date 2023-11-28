@@ -3,20 +3,19 @@ var searchButtonEl = document.getElementById("search-button")
 var historyEl = document.getElementById("history");
 var searchHistory = [];
 
-// adding event listener to search button
 searchButtonEl.addEventListener("click", function(e) {
     // prevent form from refreshing
     e.preventDefault(); 
 
-// saving search value to local storage
+
     var userSearch = searchInputEl.value;
     localStorage.setItem("userSearch", userSearch);
-// creating a var to hold the value of userSearch
+
     var userSearchGet = localStorage.getItem('userSearch');
 
-// adding the newley created varible to the start of the 
+
 searchHistory.unshift(userSearchGet)
-// calling function
+
 updateSearchHistory();
 
 
@@ -151,17 +150,11 @@ forecastEl.appendChild(forecastDiv);
 
 
 function updateSearchHistory() {
-    // clear html content so to remove duplicates when displaying on browser
     historyEl.innerHTML = "";
-
     var ulEL = document.createElement("ul");
-
-// iterate through each item in the searchHistory array and create a list item, set the text and append the list item to the unordered list.
     searchHistory.forEach(function(city) {
         var liEL = document.createElement("li");
         liEL.textContent = city;
         ulEL.appendChild(liEL);
     });
-
-// add the new ul to the historyEl
     historyEl.appendChild(ulEL)};

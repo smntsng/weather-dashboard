@@ -4,7 +4,7 @@ The weather dashboard has been created to allow users to search a city to see th
 
 
 
-(https://smntsng.github.io/work-day-scheduler/)
+[([https://smntsng.github.io/work-day-scheduler/](https://smntsng.github.io/weather-dashboard/))](https://smntsng.github.io/weather-dashboard/)
 
 ## Instructions
 ![alt text](assets/images/screenshot-1.jpg)

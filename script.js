@@ -76,10 +76,8 @@ fetch(geocodingURL)
     
     
     
-    var iconcode = data.list[0].weather[0].icon
-    var iconUrl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-    console.log(iconUrl)
-    
+
+
 
 
    
@@ -97,6 +95,18 @@ fetch(geocodingURL)
     console.log
     h1El.appendChild(h1Title); 
     todayEL.appendChild(h1El);
+
+
+    var iconcode = data.list[0].weather[0].icon
+    var iconUrl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+    console.log(iconUrl)
+    
+    var iconImg = document.createElement("img");
+    iconImg.src = iconUrl;
+
+    todayEL.appendChild(h1El);
+    todayEL.appendChild(iconImg);
+
 
 
     var todayEL = document.getElementById("today");

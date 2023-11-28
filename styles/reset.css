@@ -49,8 +49,25 @@ li{
     margin-top: 5%;
 }
 
-/* h1{
-    color: black;
-    font-size: xx-large;
-} */
+#today{
+    margin-top: 1%;
+    margin-left:10%;
+    border-top: 0.2rem solid black;
+    border-left: 0.2rem solid black;
+    border-right: 0.1rem solid black;
+    border-bottom: 0.1rem solid black;
+    padding: 1%;
+    
+}
+
+#today h1{
+    font-size: x-large;
+    display: inline;
+    
+}
+#today h2{
+    font-size: large
+    
+}
+
 

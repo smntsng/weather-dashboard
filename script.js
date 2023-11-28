@@ -16,8 +16,6 @@
 // When a user click on a city in the search history they are again presented with current and future conditions for that city
 
 
-// 3. display search data to todays data
-
 // 4. display 5 day forecast to future forecast
     // create 5 cards and append similar to above
 
@@ -73,14 +71,6 @@ fetch(geocodingURL)
     console.log("humidity: " + data.list[0].main.humidity)
     console.log("city: " + data.city.name)
 
-    
-    
-    
-
-
-
-
-   
 
     var todaysDate = dayjs().format("DD-MM-YYYY");
     console.log(todaysDate)
@@ -108,7 +98,6 @@ fetch(geocodingURL)
     todayEL.appendChild(iconImg);
 
 
-
     var todayEL = document.getElementById("today");
     var h2El = document.createElement("h2");
     var temp = Math.floor(data.list[0].main.temp-273.15)
@@ -134,12 +123,48 @@ fetch(geocodingURL)
     todayEL.appendChild(h2El);
 
 
+    var forecastEl = document.getElementById("forecast");
+    forecastEl.innerHTML = "";
 
+
+    for (var i = 0; i < 40; i+=7) {
+      var forecastDate = dayjs(data.list[i].dt_txt).format("DD-MM-YYYY");
+      console.log(forecastDate)
+      console.log(i)
+      
+    
+
+    var forecastDiv = document.createElement("div");
+    var h3Title = document.createElement("h3");
+    var tempP = document.createElement("p");
+    var windP = document.createElement("p");
+    var humidityP = document.createElement("p");
+    var iconImg = document.createElement("img");
+    
+
+    h3Title.textContent = forecastDate;
+    var forecastTemp = Math.floor(data.list[i].main.temp - 273.15);
+    tempP.textContent = "Temp: " + forecastTemp + "ºC";
+    var forecastWind = data.list[i].wind.speed;
+    windP.textContent = "Wind: " + forecastWind + " KPH";
+    var forecastHumidity = data.list[i].main.humidity;
+    humidityP.textContent = "Humidity: " + forecastHumidity + "%";
+console.log(forecastTemp)
+console.log(forecastWind)
+console.log(forecastHumidity)
+forecastDiv.appendChild(h3Title);
+forecastDiv.appendChild(tempP);
+forecastDiv.appendChild(windP);
+forecastDiv.appendChild(humidityP);
+
+forecastEl.appendChild(forecastDiv);
+}
+});
   })
 
 });
 
-});
+
 
 function updateSearchHistory() {
     // clear html content so to remove duplicates when displaying on browser

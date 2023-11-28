@@ -1,28 +1,3 @@
-// Create a weather dashboard with form inputs.
-// When a user searches for a city they are presented with current and future conditions for that city and that city is added to the search history
-
-// When a user views the current weather conditions for that city they are presented with:
-// The city name
-// The date
-// An icon representation of weather conditions
-// The temperature
-// The humidity
-// The wind speed
-// When a user view future weather conditions for that city they are presented with a 5-day forecast that displays:
-// The date
-// An icon representation of weather conditions
-// The temperature
-// The humidity
-// When a user click on a city in the search history they are again presented with current and future conditions for that city
-
-
-// 4. display 5 day forecast to future forecast
-    // create 5 cards and append similar to above
-
-
-
-
-
 var searchInputEl = document.getElementById("search-input");
 var searchButtonEl = document.getElementById("search-button")
 var historyEl = document.getElementById("history");
@@ -131,18 +106,25 @@ fetch(geocodingURL)
       var forecastDate = dayjs(data.list[i].dt_txt).format("DD-MM-YYYY");
       console.log(forecastDate)
       console.log(i)
-      
     
 
     var forecastDiv = document.createElement("div");
+    forecastDiv.classList.add("forecastCard");
     var h3Title = document.createElement("h3");
+    var iconImg = document.createElement("img");
     var tempP = document.createElement("p");
     var windP = document.createElement("p");
     var humidityP = document.createElement("p");
     var iconImg = document.createElement("img");
-    
+    var forecastEl = document.getElementById("forecast");
+forecastEl.classList.add("forecast-container");
 
+    
+ 
     h3Title.textContent = forecastDate;
+    var iconcode = data.list[i].weather[0].icon;
+var iconUrl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+iconImg.src = iconUrl;
     var forecastTemp = Math.floor(data.list[i].main.temp - 273.15);
     tempP.textContent = "Temp: " + forecastTemp + "ºC";
     var forecastWind = data.list[i].wind.speed;
@@ -152,12 +134,14 @@ fetch(geocodingURL)
 console.log(forecastTemp)
 console.log(forecastWind)
 console.log(forecastHumidity)
+
 forecastDiv.appendChild(h3Title);
+forecastDiv.appendChild(iconImg);
 forecastDiv.appendChild(tempP);
 forecastDiv.appendChild(windP);
 forecastDiv.appendChild(humidityP);
-
 forecastEl.appendChild(forecastDiv);
+
 }
 });
   })

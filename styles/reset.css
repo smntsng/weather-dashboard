@@ -70,4 +70,32 @@ li{
     
 }
 
+.forecastCard{
+background-color: #2d3e50;
+color: white;
+padding-left: 2%;
+padding-right: 2%;
+margin: 1%;
+
+}
+
+p{
+    font-size: small;
+}
+
+h3{
+    font-size: medium;
+}
+
+
+
+
+.forecast-container {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left:10%;
+ 
+    
+  }
+
 
